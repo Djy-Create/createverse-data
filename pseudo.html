@@ -2,89 +2,126 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Créer votre pseudo - Createverse Launcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Createverse - Choix du pseudo</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #2c3e50, #34495e);
+      background: linear-gradient(135deg, #1a1a1a, #2b2b2b);
       color: white;
       text-align: center;
-      padding: 50px;
+      padding: 40px;
+      animation: fadeIn 1.5s ease-in;
     }
-    h2 {
-      animation: fadeIn 2s ease-in-out;
+
+    h1 {
+      color: #ffcc00;
+      font-size: 28px;
     }
+
+    p {
+      font-size: 16px;
+      color: #ddd;
+    }
+
     form {
-      background: rgba(0, 0, 0, 0.7);
+      margin-top: 30px;
+      background: #333;
       padding: 25px;
       border-radius: 12px;
-      width: 400px;
-      margin: auto;
-      animation: fadeInUp 1s ease-in-out;
+      display: inline-block;
+      animation: fadeInUp 1s ease-in;
     }
-    input, button {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    input[type="text"] {
-      background: #ecf0f1;
-      color: #2c3e50;
-    }
-    input[type="checkbox"] {
-      width: auto;
-    }
-    button {
-      background: #27ae60;
-      color: white;
+
+    label {
       font-weight: bold;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      width: 250px;
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-top: 20px;
+    }
+
+    button {
+      background: #5865F2;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
       cursor: pointer;
-      transition: transform 0.2s, background 0.3s;
+      animation: pulse 2s infinite;
+      transition: background 0.3s;
     }
+
     button:hover {
-      background: #2ecc71;
-      transform: scale(1.05);
+      background: #4752c4;
     }
+
+    a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
+
     @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
 <body>
-  <h2>Bienvenue sur le Createverse Launcher</h2>
-  <p>Veuillez entrer votre pseudo Minecraft et accepter nos conditions pour continuer.</p>
+  <h1>Bienvenue sur Createverse 🎮</h1>
+  <p>Merci de vous être connecté avec Discord.<br>
+  Pour continuer, choisissez votre pseudo Minecraft et acceptez nos conditions.</p>
 
   <form action="http://localhost:5000/set_pseudo" method="post">
-    <input type="hidden" name="discord_id" id="discord_id">
-    <input type="hidden" name="email" id="email">
+    <label for="pseudo">Pseudo Minecraft :</label><br>
+    <input type="text" id="pseudo" name="pseudo" required><br><br>
 
-    <label><b>Pseudo Minecraft :</b></label><br>
-    <input type="text" name="pseudo" required><br>
+    <!-- Ces valeurs seront ajoutées dynamiquement par l’URL -->
+    <input type="hidden" id="discord_id" name="discord_id" value="">
+    <input type="hidden" id="email" name="email" value="">
 
-    <label>
-      <input type="checkbox" name="accept" value="yes" required>
-      En cliquant ici vous acceptez la
-      <a href="https://djy-create.github.io/createverse-legal/politique.html" target="_blank">politique de confidentialité</a>
-      et les
-      <a href="https://djy-create.github.io/createverse-legal/conditions.html" target="_blank">conditions d’utilisation</a>.
-    </label><br><br>
+    <input type="checkbox" name="accept" value="yes" required>
+    En cliquant ici vous acceptez la
+    <a href="https://djy-create.github.io/createverse-legal/politique.html" target="_blank">politique de confidentialité</a>
+    et les
+    <a href="https://djy-create.github.io/createverse-legal/conditions.html" target="_blank">conditions d’utilisation</a>.<br>
+    Pour plus d’informations contactez :
+    <a href="mailto:Launchercreateverse@gmail.com">Launchercreateverse@gmail.com</a><br><br>
 
-    <button type="submit">✅ Valider</button>
+    <button type="submit">✅ Valider mon pseudo</button>
   </form>
 
   <script>
-    // Récupère discord_id et email depuis l’URL
-    const urlParams = new URLSearchParams(window.location.search);
-    document.getElementById("discord_id").value = urlParams.get("discord_id");
-    document.getElementById("email").value = urlParams.get("email");
+    // Récupère discord_id et email depuis l’URL et les met dans les inputs hidden
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("discord_id").value = params.get("discord_id") || "";
+    document.getElementById("email").value = params.get("email") || "";
   </script>
 </body>
 </html>
