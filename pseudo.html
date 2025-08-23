@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer votre pseudo - Createverse Launcher</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      animation: fadeIn 2s ease-in-out;
+    }
+    form {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 25px;
+      border-radius: 12px;
+      width: 400px;
+      margin: auto;
+      animation: fadeInUp 1s ease-in-out;
+    }
+    input, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    input[type="text"] {
+      background: #ecf0f1;
+      color: #2c3e50;
+    }
+    input[type="checkbox"] {
+      width: auto;
+    }
+    button {
+      background: #27ae60;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    button:hover {
+      background: #2ecc71;
+      transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h2>Bienvenue sur le Createverse Launcher</h2>
+  <p>Veuillez entrer votre pseudo Minecraft et accepter nos conditions pour continuer.</p>
+
+  <form action="http://localhost:5000/set_pseudo" method="post">
+    <input type="hidden" name="discord_id" id="discord_id">
+    <input type="hidden" name="email" id="email">
+
+    <label><b>Pseudo Minecraft :</b></label><br>
+    <input type="text" name="pseudo" required><br>
+
+    <label>
+      <input type="checkbox" name="accept" value="yes" required>
+      En cliquant ici vous acceptez la
+      <a href="https://djy-create.github.io/createverse-legal/politique.html" target="_blank">politique de confidentialité</a>
+      et les
+      <a href="https://djy-create.github.io/createverse-legal/conditions.html" target="_blank">conditions d’utilisation</a>.
+    </label><br><br>
+
+    <button type="submit">✅ Valider</button>
+  </form>
+
+  <script>
+    // Récupère discord_id et email depuis l’URL
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("discord_id").value = urlParams.get("discord_id");
+    document.getElementById("email").value = urlParams.get("email");
+  </script>
+</body>
+</html>
