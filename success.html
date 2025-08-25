@@ -2,86 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✅ Pseudo enregistré</title>
+  <title>Connexion réussie</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #141e30, #243b55);
-      color: white;
-      text-align: center;
-      padding: 40px;
-      animation: fadeIn 1.5s ease-in;
-    }
-
-    h1 {
-      color: #00ff88;
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 18px;
-      color: #ddd;
-      margin-top: 10px;
-      animation: fadeInUp 1s ease-in;
-    }
-
-    .card {
-      background: rgba(0,0,0,0.6);
-      padding: 25px;
-      border-radius: 12px;
-      display: inline-block;
-      margin-top: 30px;
-      animation: zoomIn 1s ease-in;
-    }
-
-    a.button {
-      display: inline-block;
-      background: #5865F2;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      margin-top: 25px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: background 0.3s;
-      animation: pulse 2s infinite;
-    }
-
-    a.button:hover {
-      background: #4752c4;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
+    body { background:#202225; color:white; font-family:Arial; text-align:center; }
+    h1 { margin-top:50px; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.1);} 100%{transform:scale(1);} }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>✅ Pseudo enregistré avec succès !</h1>
-    <p>Votre pseudo Minecraft a bien été sauvegardé.<br>
-       Vous pouvez maintenant fermer cette fenêtre et revenir au launcher Createverse.</p>
-    <a href="https://djy-create.github.io/createverse-legal/" class="button">Retour à l’accueil</a>
-  </div>
+  <h1>✅ Connexion réussie !</h1>
+  <p>Retournez dans le launcher Createverse.</p>
 </body>
 </html>
